@@ -36,7 +36,5 @@ export const LastTransaction = styled.Text`
     font-family: ${({theme}) => theme.fonts.regular};
     font-size: ${RFValue(12)}px;
     color: ${({theme}) => theme.colors.text};
-
-
 ` 
 
