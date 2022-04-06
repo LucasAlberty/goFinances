@@ -21,43 +21,36 @@ import {
 export function Dashboard() {
 
     const data = [{
+        type: "positive",
         title: "Desenvolvimento de site",
         amount: "R$ 12.000,00",
         category: {
             name: 'Vendas',
             icon: 'dollar-sign'
         },
-        date:'13/04/2020'
+        date: '13/04/2020'
     },
     {
-        title: "Desenvolvimento de site",
-        amount: "R$ 12.000,00",
+        type: 'negative',
+        title: "Hamburgueria Pizzy",
+        amount: "R$ 59,00",
         category: {
-            name: 'Vendas',
-            icon: 'dollar-sign'
+            name: 'Alimentação',
+            icon: 'coffee'
         },
-        date:'13/04/2020'
+        date: '10/04/2020'
     },
     {
-        title: "Desenvolvimento de site",
-        amount: "R$ 12.000,00",
+        type: 'negative',
+        title: "Aluguel do apartamento",
+        amount: "R$ 800,00",
         category: {
-            name: 'Vendas',
-            icon: 'dollar-sign'
+            name: 'Casa',
+            icon: 'home'
         },
-        date:'13/04/2020'
+        date: '08/04/2020'
     },
-    {
-        title: "Desenvolvimento de site",
-        amount: "R$ 12.000,00",
-        category: {
-            name: 'Vendas',
-            icon: 'dollar-sign'
-        },
-        date:'13/04/2020'
-    },
-
-]
+    ]
 
     return (
         <Container>
@@ -77,39 +70,39 @@ export function Dashboard() {
             </Header>
 
             <HighlightCards>
-                <HighlightCard 
+                <HighlightCard
                     type="up"
-                    title="Entradas" 
-                    amount="R$ 17.400,00" 
+                    title="Entradas"
+                    amount="R$ 17.400,00"
                     lastTrasaction="Última entrada dia 13 de abril. "
                 />
-                <HighlightCard 
+                <HighlightCard
                     type="down"
-                    title="Saídas" 
-                    amount="R$ 1.259,00" 
-                    lastTrasaction="Última saída dia 13 de abril. " 
+                    title="Saídas"
+                    amount="R$ 1.259,00"
+                    lastTrasaction="Última saída dia 13 de abril. "
                 />
-                <HighlightCard 
+                <HighlightCard
                     type="total"
-                    title="Total" 
-                    amount="R$ 16.141,00" 
-                    lastTrasaction="01 a 16 de abril. " 
+                    title="Total"
+                    amount="R$ 16.141,00"
+                    lastTrasaction="01 a 16 de abril. "
                 />
             </HighlightCards>
 
             <Transactions>
                 <Title>Listagem</Title>
 
-                <TransactionList 
+                <TransactionList
                     data={data}
-                    renderItem={({item}) => <TrasactionCard data={item}/> }
+                    renderItem={({ item }) => <TrasactionCard data={item} />}
                     showsVerticalScrollIndicator={false}
                     contentContainerStyle={{
                         paddingBottom: getBottomSpace()
                     }}
                 />
 
-                
+
             </Transactions>
 
 
