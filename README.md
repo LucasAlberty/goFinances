@@ -13,4 +13,7 @@ App para gerir fincanças pessoais, com tela de dashboard, tela de lançamento d
 ![Screenshot_1649292237](https://user-images.githubusercontent.com/61556295/162097874-e0463ebd-7b87-47e0-bb88-260d0481d029.png)
 --
 ## Tela de registro
-![Screenshot_1649292207](https://user-images.githubusercontent.com/61556295/162097880-69348852-5940-45c7-af34-13ee5a153578.png)
+![Screenshot_1650051981](https://user-images.githubusercontent.com/61556295/163625393-e91dddb7-bb4b-4da9-86aa-5cd108432a93.png)
+
+![Screenshot_1650051987](https://user-images.githubusercontent.com/61556295/163625476-64bca848-c90f-496c-9f41-2ba763541090.png)
+![Screenshot_1650052001](https://user-images.githubusercontent.com/61556295/163625508-91bf4709-5247-46c8-8651-6ab8dc6b333a.png)
