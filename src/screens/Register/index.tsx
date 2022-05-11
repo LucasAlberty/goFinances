@@ -9,8 +9,9 @@ import {
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import uuid from 'react-native-uuid';
 import { useForm } from "react-hook-form";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 import { InputForm } from "../../components/Forms/InputForm";
 import { Button } from "../../components/Forms/Button";
@@ -34,6 +35,10 @@ interface FormData {
 
 }
 
+type NavigationProps = {
+    navigate:(screen:string) => void;
+ }
+
 const scheme = Yup.object().shape({
     name: Yup
         .string()
@@ -46,6 +51,9 @@ const scheme = Yup.object().shape({
 })
 
 export function Register() {
+
+    const navigation = useNavigation<NavigationProps>();
+
     const [transactionType, setTransactionType] = useState('');
     const [categoryModalOpen, setCategoryModalOpen] = useState(false);
 
@@ -59,6 +67,7 @@ export function Register() {
     const {
         control,
         handleSubmit,
+        reset,
         formState: { errors }
     } = useForm({
         resolver: yupResolver(scheme)
@@ -87,10 +96,12 @@ export function Register() {
         }
 
         const newTransaction = {
+            id: String(uuid.v4()),
             name: form.name,
             amount: form.amount,
             transactionType,
-            category: category.key
+            category: category.key,
+            date: new Date()
         }
 
         try {
@@ -103,13 +114,23 @@ export function Register() {
             ];
 
             await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormated));
+
+            reset()
+            setTransactionType('')
+            setCategory({
+                key: 'category',
+                name: 'categoria',
+            })
+
+            navigation.navigate("Listagem")
+
         } catch (error) {
             console.log(error)
             Alert.alert('Não foi possivel salvar.')
         }
     }
 
-    useEffect(() => {
+   /*  useEffect(() => {
         async function loadData() {
             const data = await AsyncStorage.getItem(dataKey);
             console.log(JSON.parse(data!));
@@ -117,12 +138,14 @@ export function Register() {
 
         loadData();
 
-        /*      async function removeAll() {
-                 await AsyncStorage.removeItem(dataKey);
-             }
-             removeAll(); */
-    }, [])
-
+        /
+        async function removeAll() {
+            await AsyncStorage.removeItem(dataKey)
+            console.log('Dados removidos com sucesso!')
+        }
+        removeAll()
+        
+    }, []) */
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <Container>
