@@ -110,19 +110,21 @@ export function Register() {
     }
 
     useEffect(() => {
-        async function loadData() {
+         async function loadData() {
             const data = await AsyncStorage.getItem(dataKey);
             console.log(JSON.parse(data!));
-        };
+        }; 
 
         loadData();
-
-        /*      async function removeAll() {
-                 await AsyncStorage.removeItem(dataKey);
-             }
-             removeAll(); */
+ 
+        /* 
+        async function removeAll() {
+            await AsyncStorage.removeItem(dataKey)
+            console.log('Dados removidos com sucesso!')
+        }
+        removeAll()
+        */
     }, [])
-
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <Container>
