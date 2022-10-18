@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { HistoryCard } from "../../components/HistoryCard";
-import { Container, Header, Title, Content, ChartContainer } from "./styles";
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  ChartContainer,
+  MonthSelect,
+  MonthSelectButton,
+  MonthSelectIcon,
+  Month,
+} from "./styles";
 import { categories } from "../../utils/Categories";
 import { VictoryPie } from "victory-native";
 import { RFValue } from "react-native-responsive-fontsize";
 import { useTheme } from "styled-components";
+import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
+
 interface TransactionData {
   type: "positive" | "negative";
   name: string;
@@ -26,7 +38,7 @@ interface CategoryData {
 export function Resume() {
   const [totalByCategory, setTotalByCategory] = useState<CategoryData[]>([]);
 
-  const theme = useTheme()
+  const theme = useTheme();
 
   async function loadData() {
     const dataKey = "@gofinances:transactions";
@@ -89,19 +101,36 @@ export function Resume() {
         <Title>Resumo por categoria</Title>
       </Header>
 
-      <Content>
+      <Content
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: 24,
+          paddingBottom: useBottomTabBarHeight(),
+        }}
+      >
+        <MonthSelect>
+          <MonthSelectButton>
+            <MonthSelectIcon name='chevron-left'/>
+          </MonthSelectButton>
+
+          <Month>Maio</Month>
+
+          <MonthSelectButton>
+            <MonthSelectIcon name='chevron-right'/>
+          </MonthSelectButton>
+        </MonthSelect>
+
         <ChartContainer>
           <VictoryPie
             data={totalByCategory}
             colorScale={totalByCategory.map((category) => category.color)}
             style={{
-              labels: { 
-                fontSize: RFValue(18), 
-                fontWeight: 'bold',
-                fill: theme.colors.shape
+              labels: {
+                fontSize: RFValue(18),
+                fontWeight: "bold",
+                fill: theme.colors.shape,
               },
             }}
-
             labelRadius={80}
             x="percent"
             y="total"
