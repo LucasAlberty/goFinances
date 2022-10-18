@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from 'react-native';
 import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 import { ThemeProvider } from "styled-components";
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
+        <StatusBar barStyle='light-content' backgroundColor='#5636D3'/>
         <AppRoutes/>
       </NavigationContainer>
     </ThemeProvider>
