@@ -22,7 +22,7 @@ export function SignIn(){
                 <TitleWrapper>
                     <LogoSvg 
                         width={RFValue(120)}
-                        heiht={RFValue(68)}
+                        height={RFValue(68)}
                     />
 
                     <Title>
