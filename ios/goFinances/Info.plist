@@ -59,6 +59,12 @@
 					<string>foobar</string>
 				</array>
 			</dict>
+			<dict>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>gofinances</string>
+				</array>
+			</dict>
 		</array>
 	</dict>
 </plist>
